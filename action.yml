@@ -27,7 +27,7 @@ runs:
         pip install requests
     - name: "Send Payload"
       shell: bash
-      run: python ./github/telemetry-gathering/send_webhook_payload.py
+      run: python send_webhook_payload.py
 branding:
   icon: 'target'
   color: 'gray-dark'
