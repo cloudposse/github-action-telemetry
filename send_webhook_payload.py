@@ -13,17 +13,19 @@ import os
 import re
 import requests
 
+
 def get_pull_request_info(event_json):
     pull_request_info = {}
     pull_request_info['number'] = event_json["pull_request"]["number"]
-    pull_request_info['url'] = event_json["pull_request"]["url"] 
+    pull_request_info['url'] = event_json["pull_request"]["url"]
     pull_request_info['title'] = event_json["pull_request"]["title"]
     pull_request_info['created_at'] = event_json["pull_request"]["created_at"]
     pull_request_info['description'] = event_json["pull_request"]["body"]
     pull_request_info['author'] = event_json["pull_request"]["user"]["login"]
     return pull_request_info
 
-if __name__=='__main__':
+
+if __name__ == '__main__':
     # read in env vars
     collector_endpoint = os.environ['INPUT_COLLECTOR_ENDPOINT']
     collector_token = os.environ['INPUT_COLLECTOR_TOKEN']
@@ -33,7 +35,7 @@ if __name__=='__main__':
     # extract all JIRA tickets
     jira_tickets = []
     for key in jira_keys.split(","):
-        regex_string = "\b" + key + "-\d+"
+        regex_string = r"\b" + key + r"-\d+"
         matches = re.findall(regex_string, event)
         if matches:
             jira_tickets.append(matches)
@@ -44,13 +46,13 @@ if __name__=='__main__':
     event_json = json.loads(event)
 
     # construct payload
-    ## extract general metadata
+    #  extract general metadata
     payload = {}
     payload['repo_org'] = event_json["repository"]["full_name"].split("/")[0]
     payload['repo_name'] = event_json["repository"]["name"]
     payload['repo_url'] = event_json["repository"]["html_url"]
     payload['jira_tickets'] = all_jira_tickets
-    ## extract event type-specific information
+    #  extract event type-specific information
     if "pull_request" in event_json.keys():
         payload['pull_request'] = get_pull_request_info(event_json)
         payload['event_type'] = "pull_request"
@@ -59,10 +61,13 @@ if __name__=='__main__':
         payload['event_type'] = "unsupported"
 
     # send payload
+    headers = {}
+    headers['user-agent'] = payload["repo_org"] + "/" + payload["repo_name"]
     if collector_token:
-        response = requests.post(collector_endpoint, headers = {"token": collector_token}, data = json.dumps(payload))
+        headers['token'] = collector_token
+        response = requests.post(collector_endpoint, headers=headers, data=json.dumps(payload))
     else:
-        response = requests.post(collector_endpoint, data = json.dumps(payload))
+        response = requests.post(collector_endpoint, headers=headers, data=json.dumps(payload))
     # check response
     print(f"Response code: {response.status_code}")
     response.raise_for_status()
