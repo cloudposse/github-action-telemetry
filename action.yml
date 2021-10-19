@@ -1,6 +1,6 @@
 name: 'Cloud Posse GitHub Telemetry'
 description: |
-  This action extracts all relevant JIRA tickets from a given GitHub event and posts the found tickets, along with some metadata, to a user-specified webhook endpoint.'
+  This action extracts all relevant JIRA tickets from a given GitHub event and posts the found tickets, along with some metadata, to a user-specified webhook endpoint.
 inputs:
   collector-endpoint:
     description: "A webhook to receive the Jira ticket-containing payload"
