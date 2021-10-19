@@ -1,4 +1,4 @@
-# Telemetry Gathering GitHub Action
+# GitHub Action for Telemetry
 
 **Name:** `cloudposse/github-action-telemetry`
 
