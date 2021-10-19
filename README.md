@@ -32,8 +32,7 @@ jobs:
 
 ## Payload Specification
 
-```
-
+```json
 {
   repo_org: // e.g. cloudposse
   repo_name: // e.g. infra
