@@ -2,7 +2,7 @@
 
 **Name:** `cloudposse/github-action-telemetry`
 
-When triggered by a GitHub API event, this action will scrape the event for all JIRA tickets mentioned and an assortment of relevant metadata.
+This GitHub Action will scrape the event for JIRA tickets and an assortment of relevant metadata and post it to a webhook endpoint
 
 ## Usage instructions
 
