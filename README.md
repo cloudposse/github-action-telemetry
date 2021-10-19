@@ -20,7 +20,7 @@ jobs:
       with:
         collector_endpoint: "https://awesome-endpoint.net"
         collector_token: ${{ secrets.token }}
-        jira_keys: "INTERNAL,EXTERNAL,CLOUDPOSSE"
+        jira_keys: "DEV,OPS,SECOPS,IT"
 
 ```
 
