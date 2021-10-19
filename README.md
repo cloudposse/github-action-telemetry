@@ -6,7 +6,7 @@ When triggered by a GitHub API event, this action will scrape the event for all 
 
 ## Usage instructions
 
-Create a workflow file (e.g. `.github/workflows/telemetry-gathering.yml`) that contains a step that `uses: cloudposse/github-action-telemetry@v1.0.0`. Here's an example workflow file:
+Create a workflow file (e.g. `.github/workflows/github-telemetry.yml`) that contains a step that `uses: cloudposse/github-action-telemetry@v1.0.0`. Here's an example workflow file:
 
 ```yaml
 name: Gather Telemetry
