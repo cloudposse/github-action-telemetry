@@ -53,4 +53,4 @@ jobs:
 
 ## Use-case
 
-This event could facilitate automatic annotation of JIRA tickets based on the contents of GitHub pull requests, to improve task tracking between these two platforms. Other integration routes certainly exist.
+This event could facilitate automatic annotation of JIRA tickets based on the contents of GitHub pull requests, to improve task tracking between these two platforms when using the native Jira GitHub interaction is not an option.
