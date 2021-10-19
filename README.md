@@ -39,7 +39,7 @@ jobs:
   repo_name: // e.g. infra
   repo_url: // full URL to repo
   event_type: // github event type
-  jira_issues: [] // extracted from event payload
+  jira_tickets: [] // extracted from event payload
   pull_request { // if the event is a pull_request
     created_at:
     number:

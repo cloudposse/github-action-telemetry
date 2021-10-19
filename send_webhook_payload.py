@@ -49,14 +49,14 @@ if __name__=='__main__':
     payload['repo_org'] = event_json["repository"]["full_name"].split("/")[0]
     payload['repo_name'] = event_json["repository"]["name"]
     payload['repo_url'] = event_json["repository"]["html_url"]
-    payload['jira_issues'] = all_jira_tickets
+    payload['jira_tickets'] = all_jira_tickets
     ## extract event type-specific information
     if "pull_request" in event_json.keys():
         payload['pull_request'] = get_pull_request_info(event_json)
         payload['event_type'] = "pull_request"
     else:
         type_specific_info = {}
-        payload['event_type'] = "unknown"
+        payload['event_type'] = "unsupported"
 
     # send payload
     if collector_token:
