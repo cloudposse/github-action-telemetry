@@ -31,6 +31,12 @@ if __name__ == '__main__':
     collector_token = os.environ['INPUT_COLLECTOR_TOKEN']
     jira_keys = os.environ['INPUT_JIRA_KEYS']
     event = os.environ['INPUT_EVENT']
+    if collector_endpoint == "" or collector_token == "" or jira_keys == "" or event == "":
+        print(f"collector_endpoint: {collector_endpoint}")
+        print(f"collector_token: {collector_token}")
+        print(f"jira_keys: {jira_keys}")
+        print(f"event: {event}")
+        raise ValueError("None of the inputs should be null.")
 
     # extract all JIRA tickets
     jira_tickets = []
