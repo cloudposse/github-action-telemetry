@@ -11,7 +11,7 @@ Create a workflow file (e.g. `.github/workflows/github-telemetry.yml`) that cont
 ```yaml
 name: GitHub Telemetry
 on: pull_request
-
+    types: [opened]
 jobs:
   telemetry:
     runs-on: ubuntu-latest
