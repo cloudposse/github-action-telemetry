@@ -49,8 +49,9 @@ if __name__ == '__main__':
         matches = re.findall(regex_string, event)
         if matches:
             jira_tickets.append(matches)
-    # flatten list of lists, if needed
+    # flatten lists and deduplicate entries, if needed
     all_jira_tickets = [item for sublist in jira_tickets for item in sublist]
+    all_jira_tickets = list(set(all_jira_tickets))
 
     # read in event data into json for remaining queries
     event_json = json.loads(event)
