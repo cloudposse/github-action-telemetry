@@ -72,7 +72,7 @@ if __name__ == '__main__':
 
     # send payload
     headers = {}
-    headers['user-agent'] = payload["repo_org"] + "/" + payload["repo_name"]
+    headers['user-agent'] = "cloudposse/github-action-telemetry"
     if collector_token:
         headers['token'] = collector_token
         response = requests.post(collector_endpoint, headers=headers, data=json.dumps(payload))
