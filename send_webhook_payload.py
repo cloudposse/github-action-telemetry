@@ -67,6 +67,7 @@ if __name__ == '__main__':
     if "pull_request" in event_json.keys():
         payload['pull_request'] = get_pull_request_info(event_json)
         payload['event_type'] = "pull_request"
+        payload['event_action'] = event_json["action"]
     else:
         type_specific_info = {}
         payload['event_type'] = "unsupported"
