@@ -32,6 +32,7 @@ runs:
 #        echo "::set-output name=event::$GITHUB_EVENT"
     - name: "Send Payload"
       shell: bash
+      workdir: ${{ github.action_path }}
       run: python send_webhook_payload.py
       env:
         INPUT_EVENT: ${{ toJson(github.event) }}
