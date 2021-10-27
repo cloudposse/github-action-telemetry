@@ -75,9 +75,9 @@ if __name__ == '__main__':
     headers['user-agent'] = "cloudposse/github-action-telemetry"
     if collector_token:
         headers['token'] = collector_token
-        response = requests.post(collector_endpoint, headers=headers, data=json.dumps(payload))
+        response = requests.post(collector_endpoint, headers=headers, json=payload)
     else:
-        response = requests.post(collector_endpoint, headers=headers, data=json.dumps(payload))
+        response = requests.post(collector_endpoint, headers=headers, json=payload)
     # check response
     print(f"Response code: {response.status_code}")
     response.raise_for_status()
