@@ -7,7 +7,7 @@ inputs:
     required: true
   collector-token:
     description: "Token used to authenticate GitHub Action to the webhook endpoint"
-    required: true
+    required: false
   jira-keys:
     description: "Prefixes to search for in Jira tickets"
     required: true
