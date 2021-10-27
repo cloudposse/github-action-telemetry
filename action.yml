@@ -35,7 +35,9 @@ runs:
       run: python ${{ github.action_path }}/send_webhook_payload.py
       env:
         INPUT_EVENT: ${{ toJson(github.event) }}
-        #INPUT_EVENT: ${{ steps.event-dump.outputs.event }}
+        INPUT_COLLECTOR_ENDPOINT: ${{ env.INPUT_COLLECTOR_ENDPOINT }}
+        INPUT_COLLECTOR_TOKEN: ${{ env.INPUT_COLLECTOR_TOKEN }}
+        INPUT_JIRA_KEYS: ${{ env.INPUT_JIRA_KEYS }}
 branding:
   icon: 'target'
   color: 'gray-dark'
