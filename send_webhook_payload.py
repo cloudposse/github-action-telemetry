@@ -31,11 +31,9 @@ if __name__ == '__main__':
     collector_token = os.environ['INPUT_COLLECTOR_TOKEN']
     jira_keys = os.environ['INPUT_JIRA_KEYS']
     event = os.environ['INPUT_EVENT']
-    if collector_endpoint == "" or collector_token == "" or jira_keys == "" or event == "":
+    if collector_endpoint == "" or jira_keys == "" or event == "":
         if collector_endpoint == "":
             print("collector_endpoint input is null-valued.")
-        if collector_token == "":
-            print("collector_token input is null-valued.")
         if jira_keys == "":
             print("jira_keys input is null-valued.")
         if event == "":
