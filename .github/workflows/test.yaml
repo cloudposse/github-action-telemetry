@@ -1,6 +1,6 @@
 name: GitHub Telemetry
 on: pull_request
-    types: [edited, opened, reopened]
+  types: [edited, opened, reopened]
 jobs:
   telemetry:
     runs-on: ubuntu-latest
