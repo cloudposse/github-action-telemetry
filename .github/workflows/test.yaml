@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: cloudposse/github-action-telemetry@initial_action
+      shell: bash
       with:
         collector_endpoint: ${{ secrets.COLLECTOR_ENDPOINT }}
         collector_token: ${{ secrets.COLLECTOR_TOKEN }}
