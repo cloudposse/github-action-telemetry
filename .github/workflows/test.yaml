@@ -1,0 +1,12 @@
+name: GitHub Telemetry
+on: pull_request
+    types: [edited, opened, reopened]
+jobs:
+  telemetry:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: cloudposse/github-action-telemetry@initial_action
+      with:
+        collector_endpoint: ${{ secrets.COLLECTOR_ENDPOINT }}
+        collector_token: ${{ secrets.COLLECTOR_TOKEN }}
+        jira_keys: "CPCO,INTERNAL"
