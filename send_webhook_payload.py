@@ -44,6 +44,7 @@ if __name__ == '__main__':
     jira_tickets = []
     for key in jira_keys.split(","):
         regex_string = r"\b" + key + r"-\d+"
+        print(f"regex: {regex_string}")
         matches = re.findall(regex_string, event)
         if matches:
             jira_tickets.append(matches)
