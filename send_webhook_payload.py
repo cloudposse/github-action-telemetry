@@ -41,8 +41,6 @@ if __name__ == '__main__':
         raise ValueError("Because one or more inputs is null-valued, this program is termiating.")
 
     # extract all JIRA tickets
-    print(f"event type: {type(event)}")
-    print(f"event: {event}")
     jira_tickets = []
     for key in jira_keys.split(","):
         regex_string = r"(?<=\W|[a-z]){}-\d+".format(key)
