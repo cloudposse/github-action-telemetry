@@ -71,6 +71,7 @@ if __name__ == '__main__':
         payload['event_type'] = "unsupported"
 
     # send payload
+    print(f"Payload: {json.dumps(payload, indent=4)}")
     headers = {}
     headers['user-agent'] = "cloudposse/github-action-telemetry"
     if collector_token:
