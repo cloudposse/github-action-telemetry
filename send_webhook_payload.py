@@ -45,7 +45,7 @@ if __name__ == '__main__':
     print(f"event: {event}")
     jira_tickets = []
     for key in jira_keys.split(","):
-        regex_string = r"(\b|\\n|\\r){}-\d+".format(key)
+        regex_string = r"(?<=\W|[a-z]){}-\d+".format(key)
         print(f"regex: {regex_string}")
         matches = re.findall(regex_string, event)
         if matches:
