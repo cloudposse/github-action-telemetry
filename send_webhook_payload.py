@@ -43,7 +43,7 @@ if __name__ == '__main__':
     # extract all JIRA tickets
     jira_tickets = []
     for key in jira_keys.split(","):
-        regex_string = r"\b" + key + r"-\d+"
+        regex_string = r"\b{}-\d+".format(key)
         print(f"regex: {regex_string}")
         matches = re.findall(regex_string, event)
         if matches:
