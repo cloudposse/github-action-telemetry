@@ -6,7 +6,7 @@ jobs:
   telemetry:
     runs-on: ubuntu-latest
     steps:
-    - uses: cloudposse/github-action-telemetry@initial_action
+    - uses: cloudposse/github-action-telemetry
       with:
         collector-endpoint: ${{ secrets.COLLECTOR_ENDPOINT }}
         collector-token: ${{ secrets.COLLECTOR_TOKEN }}
