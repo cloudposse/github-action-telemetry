@@ -17,7 +17,7 @@ import requests
 def get_pull_request_info(event_json):
     pull_request_info = {}
     pull_request_info['number'] = event_json["pull_request"]["number"]
-    pull_request_info['url'] = event_json["pull_request"]["url"]
+    pull_request_info['url'] = event_json["pull_request"]["_links"]["html"]["href"]
     pull_request_info['title'] = event_json["pull_request"]["title"]
     pull_request_info['created_at'] = event_json["pull_request"]["created_at"]
     pull_request_info['description'] = event_json["pull_request"]["body"]
