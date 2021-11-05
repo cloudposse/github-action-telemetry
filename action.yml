@@ -1,0 +1,43 @@
+name: 'Cloud Posse GitHub Telemetry'
+description: |
+  This action extracts all relevant JIRA tickets from a given GitHub event and posts the found tickets, along with some metadata, to a user-specified webhook endpoint.
+inputs:
+  collector-endpoint:
+    description: "A webhook to receive the Jira ticket-containing payload"
+    required: true
+  collector-token:
+    description: "Token used to authenticate GitHub Action to the webhook endpoint"
+    required: false
+  jira-keys:
+    description: "Prefixes to search for in Jira tickets"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: "Setup Python"
+      uses: actions/setup-python@v2
+      with:
+        python-version: "3.x"
+    - name: "Install Necessary Package"
+      shell: bash
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests
+#    - name: "Capture Triggering GitHub API Event"
+#      shell: bash
+#      id: event-dump
+#      env:
+#        GITHUB_EVENT: ${{ toJson(github.event) }}
+#      run: |
+#        echo "::set-output name=event::$GITHUB_EVENT"
+    - name: "Send Payload"
+      shell: bash
+      run: python ${{ github.action_path }}/send_webhook_payload.py
+      env:
+        INPUT_EVENT: ${{ toJson(github.event) }}
+        INPUT_COLLECTOR_ENDPOINT: ${{ inputs.collector-endpoint }}
+        INPUT_COLLECTOR_TOKEN: ${{ inputs.collector-token }}
+        INPUT_JIRA_KEYS: ${{ inputs.jira-keys }}
+branding:
+  icon: 'target'
+  color: 'gray-dark'
